@@ -20,7 +20,6 @@ describe('cart', () => {
 
         // select the first product then open its page
         cy.get(firstProduct).click()
-
     })
 
     it('should add the product to cart', () => {
