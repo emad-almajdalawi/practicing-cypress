@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe('Github', () => {
     const test = {
         "squadName": "Super Hero Squad",

@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe('title', () => {
     it('h1 LOREM IPSUM', () => {
         cy.request('https://www.lipsum.com').its('status').should('eq', 200);
