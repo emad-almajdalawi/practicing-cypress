@@ -13,7 +13,7 @@ describe('cart', () => {
         cy.visit('https://www.noon.com/uae-en/')
     })
 
-    it('shuold search for a product then click on it', () => {
+    it('should search for a product then click on it', () => {
         // search for a product (iphone)
         cy.get('#searchBar').type('iphone {enter}')
         cy.wait(4000)
