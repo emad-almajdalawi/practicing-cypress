@@ -11,7 +11,7 @@ describe('cart', () => {
     })
 
     it('select product', () => {
-        // cy.get('#__next > div > section > div > div > div > div.sc-14577ffd-5.fYEHiF > div.sc-14577ffd-7.gxngsl.grid > span:nth-child(1)')
+        // cy.get('div.sc-14577ffd-7.gxngsl.grid > span:nth-child(1)')
         //     .click()
         cy.get('#productBox-N50840187A > .sc-9e9305b-0')
             .click()
@@ -31,7 +31,7 @@ describe('cart', () => {
         cy.get('.cartLink')
             .click()
         cy.wait(2000)
-        cy.get('#__next > div > section > div > div > div.sc-d66c1747-1.ruDHX > div.sc-ce9d6f0f-3.bxWqLd > div > div.sc-ce9d6f0f-5.hQMcxH > div.sc-ce9d6f0f-7.cRyAUI > h1')
+        cy.get(' div.sc-ce9d6f0f-7.cRyAUI > h1')
             .should('contain', 'iPhone 13 Pro Max')
     })
 
