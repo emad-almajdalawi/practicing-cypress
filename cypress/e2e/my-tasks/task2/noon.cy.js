@@ -11,8 +11,9 @@ describe('cart', () => {
     const productNameFromCartPage = 'div.sc-ce9d6f0f-7.cRyAUI > h1'
     const removeBtn = '.sc-ce9d6f0f-24'
     const mainBodySecstion = '.sc-64a8c7b2-0'
+    var productName = ''
 
-    it('should visit the home page', () => {
+    before(() => {
         cy.visit(homePage)
     })
 
@@ -22,28 +23,27 @@ describe('cart', () => {
         cy.get(firstProduct).click()
     })
 
-    it('should add the product to cart', () => {
-        // save the product's name
+    it("should save the product's name", () => {
         cy.get(productNmaeFromProductPage)
             .then(message => {
-                const productName = message.text()
+                productName = message.text()
                 cy.wait(2000)
-
-                // add product to the cart
-                cy.get(addToCartBtn)
-                    .click()
-                cy.wait(2000)
-                cy.get(continueShopingBtn)
-                    .click()
-                cy.wait(2000)
-
-                // open cart page
-                cy.get(cartBtn)
-                    .click()
-                cy.wait(2000)
-                cy.get(productNameFromCartPage)
-                    .should('contain', `${productName}`)
             })
+    })
+
+    it('should add the product to cart', () => {
+        cy.get(addToCartBtn)
+            .click()
+        cy.wait(2000)
+        cy.get(continueShopingBtn)
+            .click()
+        cy.wait(2000)
+
+        cy.get(cartBtn)
+            .click()
+        cy.wait(2000)
+        cy.get(productNameFromCartPage)
+            .should('contain', `${productName}`)
     })
 
     it('should remove the product from cart', () => {
