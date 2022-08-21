@@ -6,7 +6,7 @@ describe('cart', () => {
     })
 
     it('select one product and add it to the cart', () => {
-        // search for a product
+        // search a product
         cy.get('#searchBar').type('iphone {enter}')
 
         // select the first product then open its page
