@@ -18,7 +18,7 @@ describe('cart', () => {
         cy.wait(2000)
     })
 
-    it('add to cart', () => {
+    it('add a product to cart', () => {
         cy.get('.sc-8a26e3fa-14 > .sc-956a1cfb-1 > .cart-button > .loaderCtr')
             .click()
         cy.wait(1000)
@@ -35,7 +35,7 @@ describe('cart', () => {
             .should('contain', 'iPhone 13 Pro Max')
     })
 
-    it('remove product from chart', () => {
+    it('remove product from cart', () => {
         cy.get('.sc-ce9d6f0f-24')
             .click()
         cy.wait(1000)
