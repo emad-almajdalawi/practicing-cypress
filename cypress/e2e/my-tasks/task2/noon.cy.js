@@ -32,7 +32,7 @@ describe('cart', () => {
                 cy.get('.cartLink')
                     .click()
                 cy.get(' div.sc-ce9d6f0f-7.cRyAUI > h1')
-                    .should('contain', 'iPhone 13 Pro Max')
+                    .should('contain', `${product_name}`)
             })
 
         // remove the product from the cart
