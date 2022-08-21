@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('home page', () => {
+describe('cart', () => {
     it('visit', () => {
         cy.visit('https://www.noon.com/uae-en/')
     })
@@ -47,4 +47,3 @@ describe('home page', () => {
             .should('contain', 'Your shopping cart looks empty')
     })
 })
-
