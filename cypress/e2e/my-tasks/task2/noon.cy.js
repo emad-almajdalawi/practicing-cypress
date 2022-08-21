@@ -7,7 +7,7 @@ describe('cart', () => {
     const productNmaeFromProductPage = '.sc-8a26e3fa-12'
     const addToCartBtn = '.sc-8a26e3fa-14 > .sc-956a1cfb-1 > .cart-button > .loaderCtr'
     const continueShopingBtn = '#continue-shopping-btn > .sc-af60a083-1'
-    const cartURL = '.cartLink'
+    const cartBtn = '.cartLink'
     const productNameFromCartPage = 'div.sc-ce9d6f0f-7.cRyAUI > h1'
     const removeBtn = '.sc-ce9d6f0f-24'
     const mainBodySecstion = '.sc-64a8c7b2-0'
@@ -16,12 +16,9 @@ describe('cart', () => {
         cy.visit(homePage)
     })
 
-    it('should search for a product then click on it', () => {
-        // search for a product (iphone)
+    it('should search for a product then click on the first result', () => {
         cy.get(searchBar).type('iphone {enter}')
         cy.wait(4000)
-
-        // select the first product then open its page
         cy.get(firstProduct).click()
     })
 
@@ -30,7 +27,6 @@ describe('cart', () => {
         cy.get(productNmaeFromProductPage)
             .then(message => {
                 const productName = message.text()
-                console.log(productName)
                 cy.wait(2000)
 
                 // add product to the cart
@@ -42,7 +38,7 @@ describe('cart', () => {
                 cy.wait(2000)
 
                 // open cart page
-                cy.get(cartURL)
+                cy.get(cartBtn)
                     .click()
                 cy.wait(2000)
                 cy.get(productNameFromCartPage)
@@ -51,13 +47,11 @@ describe('cart', () => {
     })
 
     it('should remove the product from cart', () => {
-        // remove the product from the cart
         cy.get(removeBtn)
             .click()
         cy.wait(2000)
 
-        // check if the cart is empty
-        cy.get('.cartLink')
+        cy.get(cartBtn)
             .click()
         cy.wait(2000)
         cy.get(mainBodySecstion)
