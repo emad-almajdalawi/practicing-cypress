@@ -27,7 +27,7 @@ describe('cart', () => {
         // save the product's name
         cy.get(productNmaeFromProductPage)
             .then(message => {
-                let productName = message.text()
+                const productName = message.text()
                 console.log(productName)
                 cy.wait(2000)
 
