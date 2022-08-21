@@ -31,7 +31,6 @@ describe('cart', () => {
                 // open cart page
                 cy.get('.cartLink')
                     .click()
-                cy.wait(2000)
                 cy.get(' div.sc-ce9d6f0f-7.cRyAUI > h1')
                     .should('contain', 'iPhone 13 Pro Max')
             })
