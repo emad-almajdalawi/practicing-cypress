@@ -1,21 +1,24 @@
 /// <reference types="cypress" />
 
 describe('cart', () => {
+    const homePage = 'https://www.noon.com/uae-en/'
+    const searchBar = '#searchBar'
     const firstProduct = '#productBox-N50840187A > .sc-9e9305b-0'
     const productNmaeFromProductPage = '.sc-8a26e3fa-12'
     const addToCartBtn = '.sc-8a26e3fa-14 > .sc-956a1cfb-1 > .cart-button > .loaderCtr'
     const continueShopingBtn = '#continue-shopping-btn > .sc-af60a083-1'
+    const cartURL = '.cartLink'
     const productNameFromCartPage = 'div.sc-ce9d6f0f-7.cRyAUI > h1'
     const removeBtn = '.sc-ce9d6f0f-24'
     const mainBodySecstion = '.sc-64a8c7b2-0'
 
     it('should visit the home page', () => {
-        cy.visit('https://www.noon.com/uae-en/')
+        cy.visit(homePage)
     })
 
     it('should search for a product then click on it', () => {
         // search for a product (iphone)
-        cy.get('#searchBar').type('iphone {enter}')
+        cy.get(searchBar).type('iphone {enter}')
         cy.wait(4000)
 
         // select the first product then open its page
@@ -39,7 +42,7 @@ describe('cart', () => {
                 cy.wait(2000)
 
                 // open cart page
-                cy.get('.cartLink')
+                cy.get(cartURL)
                     .click()
                 cy.wait(2000)
                 cy.get(productNameFromCartPage)
