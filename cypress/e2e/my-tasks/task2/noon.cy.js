@@ -14,47 +14,41 @@ describe('cart', () => {
     var productName = ''
 
 
-    before(() => {
+    it('Should visit the home page', () => {
         cy.visit(homePage)
     })
 
-    it('should search for a product then click on the first result', () => {
+    it('Should search for a product then click on the first result', () => {
         cy.get(searchBar).type('iphone {enter}')
-        cy.wait(4000)
         cy.get(firstProduct).click()
     })
 
-    it("should save the product's name", () => {
+    it("Should save the product's name", () => {
         cy.get(productNmaeFromProductPage)
             .then(message => {
                 productName = message.text()
-                cy.wait(2000)
+
             })
     })
 
-    it('should add the product to cart', () => {
+    it('Should add the product to cart', () => {
         cy.get(addToCartBtn)
             .click()
-        cy.wait(2000)
         cy.get(continueShopingBtn)
             .click()
-        cy.wait(2000)
 
         cy.get(cartBtn)
             .click()
-        cy.wait(2000)
         cy.get(productNameFromCartPage)
             .should('contain', `${productName}`)
     })
 
-    it('should remove the product from cart', () => {
+    it('Should remove the product from cart', () => {
         cy.get(removeBtn)
             .click()
-        cy.wait(2000)
 
         cy.get(cartBtn)
             .click()
-        cy.wait(2000)
         cy.get(mainBodySecstion)
             .should('contain', 'Your shopping cart looks empty')
     })
