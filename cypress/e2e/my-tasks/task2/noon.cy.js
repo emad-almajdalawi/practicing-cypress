@@ -14,16 +14,16 @@ describe('cart', () => {
     var productName = ''
 
 
-    it('Visit the home page', () => {
+    it('Should visit the home page', () => {
         cy.visit(homePage)
     })
 
-    it('Search for a product then click on the first result', () => {
+    it('Should search for a product then click on the first result', () => {
         cy.get(searchBar).type('iphone {enter}')
         cy.get(firstProduct).click()
     })
 
-    it("Save the product's name", () => {
+    it("Should save the product's name", () => {
         cy.get(productNmaeFromProductPage)
             .then(message => {
                 productName = message.text()
@@ -31,7 +31,7 @@ describe('cart', () => {
             })
     })
 
-    it('Add the product to cart', () => {
+    it('Should add the product to cart', () => {
         cy.get(addToCartBtn)
             .click()
         cy.get(continueShopingBtn)
@@ -43,7 +43,7 @@ describe('cart', () => {
             .should('contain', `${productName}`)
     })
 
-    it('Remove the product from cart', () => {
+    it('Should remove the product from cart', () => {
         cy.get(removeBtn)
             .click()
 
