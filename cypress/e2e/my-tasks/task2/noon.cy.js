@@ -1,12 +1,13 @@
 /// <reference types="cypress" />
 
 describe('cart', () => {
-    let views = ['Desktop Resolution', 'Mobile Resolution', 'Phone view 1080 x 1920']
+    let views = ['Desktop Resolution', 'IPhone-X view', 'Phone view 1080 x 1920']
+
     views.forEach(view => {
         context(view, () => {
             var productName = ''
 
-            if (view == 'Mobile Resolution') {
+            if (view == 'IPhone X view') {
                 beforeEach(() => {
                     cy.viewport('iphone-x')
                 })
