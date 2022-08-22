@@ -13,6 +13,7 @@ describe('cart', () => {
     const mainBodySecstion = '.sc-64a8c7b2-0'
     var productName = ''
 
+
     before(() => {
         cy.visit(homePage)
     })
