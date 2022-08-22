@@ -1,9 +1,9 @@
 /// <reference types="cypress" />
 
 describe('cart', () => {
-    let views = ['Desktop Resolution', 'Mobile Resolution']
+    let views = ['Desktop Resolution', 'Mobile Resolution', 'Phone view 1080 x 1920']
     views.forEach(view => {
-        context('Desktop Resolution', () => {
+        context(view, () => {
             var productName = ''
 
             if (view == 'Mobile Resolution') {
@@ -11,6 +11,13 @@ describe('cart', () => {
                     cy.viewport('iphone-x')
                 })
             }
+
+            if (view == 'Phone view 1080 x 1920') {
+                beforeEach(() => {
+                    cy.viewport(1080, 1920)
+                })
+            }
+
             it('Should visit the home page', () => {
                 cy.visit(Cypress.config('baseUrl'))
             })
@@ -37,6 +44,7 @@ describe('cart', () => {
 
                 cy.get(Cypress.config('cartBtn'))
                     .click()
+                cy.wait(1000)
                 cy.get(Cypress.config('productNameFromCartPage'))
                     .should('contain', `${productName}`)
             })
