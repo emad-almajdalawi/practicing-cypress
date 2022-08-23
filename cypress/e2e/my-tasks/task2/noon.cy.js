@@ -7,7 +7,7 @@ describe('cart', () => {
         context(view, () => {
             var productName = ''
 
-            if (view == 'IPhone X view') {
+            if (view == 'IPhone-X view') {
                 beforeEach(() => {
                     cy.viewport('iphone-x')
                 })
@@ -20,7 +20,7 @@ describe('cart', () => {
             }
 
             it('Should visit the home page', () => {
-                cy.visit(Cypress.config('baseUrl'))
+                cy.visit(Cypress.env('baseUrl'))
             })
 
             it('Should search for a product then click on the first result', () => {

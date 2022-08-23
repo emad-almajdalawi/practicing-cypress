@@ -17,4 +17,8 @@ module.exports = defineConfig({
             // implement node event listeners here
         },
     },
+    env: {
+        baseUrl: 'https://www.noon.com/uae-en/',
+
+    }
 });
