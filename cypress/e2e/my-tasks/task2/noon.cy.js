@@ -20,17 +20,17 @@ describe('cart', () => {
             }
 
             it('Should visit the home page', () => {
-                cy.visit(Cypress.env('baseUrl'))
+                cy.visit(Cypress.config('baseUrl'))
             })
 
             it('Should search for a product then click on the first result', () => {
-                cy.get(Cypress.config('searchBar')).type('iphone {enter}')
+                cy.get(Cypress.env('searchBar')).type('iphone {enter}')
                 cy.wait(1000)
-                cy.get(Cypress.config('firstProduct')).click()
+                cy.get(Cypress.env('firstProduct')).click()
             })
 
             it("Should save the product's name", () => {
-                cy.get(Cypress.config('productNmaeFromProductPage'))
+                cy.get(Cypress.env('productNmaeFromProductPage'))
                     .then(message => {
                         productName = message.text()
 
@@ -38,25 +38,25 @@ describe('cart', () => {
             })
 
             it('Should add the product to cart', () => {
-                cy.get(Cypress.config('addToCartBtn'))
+                cy.get(Cypress.env('addToCartBtn'))
                     .click()
-                cy.get(Cypress.config('continueShopingBtn'))
+                cy.get(Cypress.env('continueShopingBtn'))
                     .click()
 
-                cy.get(Cypress.config('cartBtn'))
+                cy.get(Cypress.env('cartBtn'))
                     .click()
                 cy.wait(1000)
-                cy.get(Cypress.config('productNameFromCartPage'))
+                cy.get(Cypress.env('productNameFromCartPage'))
                     .should('contain', `${productName}`)
             })
 
             it('Should remove the product from cart', () => {
-                cy.get(Cypress.config('removeBtn'))
+                cy.get(Cypress.env('removeBtn'))
                     .click()
 
-                cy.get(Cypress.config('cartBtn'))
+                cy.get(Cypress.env('cartBtn'))
                     .click()
-                cy.get(Cypress.config('mainBodySecstion'))
+                cy.get(Cypress.env('mainBodySecstion'))
                     .should('contain', 'Your shopping cart looks empty')
             })
         })

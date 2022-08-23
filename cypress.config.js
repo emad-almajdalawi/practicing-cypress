@@ -3,6 +3,13 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
     e2e: {
         baseUrl: 'https://www.noon.com/uae-en/',
+
+
+        setupNodeEvents(on, config) {
+            // implement node event listeners here
+        },
+    },
+    env: {
         searchBar: '#searchBar',
         firstProduct: '#productBox-N50840187A > .sc-9e9305b-0',
         productNmaeFromProductPage: '.sc-8a26e3fa-12',
@@ -12,13 +19,5 @@ module.exports = defineConfig({
         productNameFromCartPage: 'div.sc-ce9d6f0f-7.cRyAUI > h1',
         removeBtn: '.sc-ce9d6f0f-24',
         mainBodySecstion: '.sc-64a8c7b2-0',
-
-        setupNodeEvents(on, config) {
-            // implement node event listeners here
-        },
-    },
-    env: {
-        baseUrl: 'https://www.noon.com/uae-en/',
-
     }
 });
