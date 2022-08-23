@@ -1,55 +1,64 @@
 /// <reference types="cypress" />
 
 describe('cart', () => {
-    const homePage = 'https://www.noon.com/uae-en/'
-    const searchBar = '#searchBar'
-    const firstProduct = '#productBox-N50840187A > .sc-9e9305b-0'
-    const productNmaeFromProductPage = '.sc-8a26e3fa-12'
-    const addToCartBtn = '.sc-8a26e3fa-14 > .sc-956a1cfb-1 > .cart-button > .loaderCtr'
-    const continueShopingBtn = '#continue-shopping-btn > .sc-af60a083-1'
-    const cartBtn = '.cartLink'
-    const productNameFromCartPage = 'div.sc-ce9d6f0f-7.cRyAUI > h1'
-    const removeBtn = '.sc-ce9d6f0f-24'
-    const mainBodySecstion = '.sc-64a8c7b2-0'
-    var productName = ''
+    let views = ['Desktop Resolution', 'IPhone-X view', 'Phone view 1080 x 1920']
 
+    views.forEach(view => {
+        context(view, () => {
+            var productName = ''
 
-    it('Should visit the home page', () => {
-        cy.visit(homePage)
-    })
+            if (view == 'IPhone-X view') {
+                beforeEach(() => {
+                    cy.viewport('iphone-x')
+                })
+            }
 
-    it('Should search for a product then click on the first result', () => {
-        cy.get(searchBar).type('iphone {enter}')
-        cy.get(firstProduct).click()
-    })
+            if (view == 'Phone view 1080 x 1920') {
+                beforeEach(() => {
+                    cy.viewport(1080, 1920)
+                })
+            }
 
-    it("Should save the product's name", () => {
-        cy.get(productNmaeFromProductPage)
-            .then(message => {
-                productName = message.text()
-
+            it('Should visit the home page', () => {
+                cy.visit(Cypress.env('baseUrl'))
             })
-    })
 
-    it('Should add the product to cart', () => {
-        cy.get(addToCartBtn)
-            .click()
-        cy.get(continueShopingBtn)
-            .click()
+            it('Should search for a product then click on the first result', () => {
+                cy.get(Cypress.config('searchBar')).type('iphone {enter}')
+                cy.wait(1000)
+                cy.get(Cypress.config('firstProduct')).click()
+            })
 
-        cy.get(cartBtn)
-            .click()
-        cy.get(productNameFromCartPage)
-            .should('contain', `${productName}`)
-    })
+            it("Should save the product's name", () => {
+                cy.get(Cypress.config('productNmaeFromProductPage'))
+                    .then(message => {
+                        productName = message.text()
 
-    it('Should remove the product from cart', () => {
-        cy.get(removeBtn)
-            .click()
+                    })
+            })
 
-        cy.get(cartBtn)
-            .click()
-        cy.get(mainBodySecstion)
-            .should('contain', 'Your shopping cart looks empty')
+            it('Should add the product to cart', () => {
+                cy.get(Cypress.config('addToCartBtn'))
+                    .click()
+                cy.get(Cypress.config('continueShopingBtn'))
+                    .click()
+
+                cy.get(Cypress.config('cartBtn'))
+                    .click()
+                cy.wait(1000)
+                cy.get(Cypress.config('productNameFromCartPage'))
+                    .should('contain', `${productName}`)
+            })
+
+            it('Should remove the product from cart', () => {
+                cy.get(Cypress.config('removeBtn'))
+                    .click()
+
+                cy.get(Cypress.config('cartBtn'))
+                    .click()
+                cy.get(Cypress.config('mainBodySecstion'))
+                    .should('contain', 'Your shopping cart looks empty')
+            })
+        })
     })
 })
