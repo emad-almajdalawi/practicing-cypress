@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cy:open-bla-bla": "cypress open --config integerationFolder=practicing-cypress/cypress/e2e/my-tasks/task2/noon.cy.js" // , userAgent=desktop"
+    "cy:open-task2": "cypress open --config integerationFolder=practicing-cypress/cypress/e2e/my-tasks/task2,userAgent=desktop"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^10.6.0"
+  },
+  "dependencies": {
+    "@shelex/cypress-allure-plugin": "^2.28.5"
   }
 }
