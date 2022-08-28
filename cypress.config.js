@@ -16,7 +16,7 @@ module.exports = defineConfig({
         addToCartBtn: '.sc-8a26e3fa-14 > .sc-956a1cfb-1 > .cart-button > .loaderCtr',
         continueShopingBtn: '#continue-shopping-btn > .sc-af60a083-1',
         cartBtn: '.cartLink',
-        productNameFromCartPage: 'div.sc-ce9d6f0f-7.cRyAUI > h1',
+        productNameFromCartPage: '.sc-ce9d6f0f-4',
         removeBtn: '.sc-ce9d6f0f-24',
         mainBodySecstion: '.sc-64a8c7b2-0',
     }
